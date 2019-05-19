@@ -2,9 +2,17 @@
   "name": "vue2-recaptchav3",
   "version": "1.0.0",
   "description": "VueJs Google Recaptcha V3",
-  "main": "index.js",
+  "main": "dist/GoogleRecaptcha.umd.js",
+  "module": "dist/GoogleRecaptcha.esm.js",
+  "unpkg": "dist/GoogleRecaptcha.min.js",
+  "browser": {
+    "./sfc": "src/GoogleRecaptcha.vue"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
+    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/GoogleRecaptcha.umd.js",
+    "build:es": "rollup --config build/rollup.config.js --format es --file dist/GoogleRecaptcha.esm.js",
+    "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/GoogleRecaptcha.min.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +29,16 @@
   "bugs": {
     "url": "https://github.com/gabrieliuga/vue2-recaptchav3/issues"
   },
-  "homepage": "https://github.com/gabrieliuga/vue2-recaptchav3#readme"
+  "homepage": "https://github.com/gabrieliuga/vue2-recaptchav3#readme",
+  "devDependencies": {
+    "rollup": "^1.12.2",
+    "rollup-plugin-buble": "^0.19.6",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-vue": "^5.0.0",
+    "vue": "^2.6.10",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
 }
