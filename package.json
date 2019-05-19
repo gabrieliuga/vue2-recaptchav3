@@ -1,0 +1,25 @@
+{
+  "name": "vue2-recaptchav3",
+  "version": "1.0.0",
+  "description": "VueJs Google Recaptcha V3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/gabrieliuga/vue2-recaptchav3.git"
+  },
+  "keywords": [
+    "VueJs",
+    "Recaptcha",
+    "Recaptcha",
+    "V3"
+  ],
+  "author": "Gabriel Iuga",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gabrieliuga/vue2-recaptchav3/issues"
+  },
+  "homepage": "https://github.com/gabrieliuga/vue2-recaptchav3#readme"
+}
