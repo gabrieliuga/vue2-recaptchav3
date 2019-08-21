@@ -1,6 +1,6 @@
 {
   "name": "vue2-recaptchav3",
-  "version": "1.0.3",
+  "version": "1.0.7",
   "description": "VueJs Google Recaptcha V3",
   "main": "dist/GoogleRecaptcha.umd.js",
   "module": "dist/GoogleRecaptcha.esm.js",

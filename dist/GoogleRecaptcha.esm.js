@@ -4,7 +4,8 @@ var script = {
     props: ['sitekey', 'action'],
     data: function data() {
         return {
-            runs: 0
+            runs: 0,
+            script_added: false,
         }
     },
     watch: {
@@ -18,16 +19,17 @@ var script = {
             }, 10);
         }
     },
-    created: function () {
+    created: function created() {
         var this$1 = this;
 
-        if (!_.isUndefined(this.sitekey)) {
+        if (!_.isUndefined(this.sitekey) && this.script_added === false) {
             var recaptchaScript = document.createElement('script');
             recaptchaScript.setAttribute('src', ("https://www.google.com/recaptcha/api.js?render=" + (this.sitekey)));
             document.head.appendChild(recaptchaScript);
             setTimeout(function () {
                 this$1.generateToken();
             }, 10);
+            this.script_added = true;
         } else {
             // eslint-disable-next-line
             console.log('Provide SiteKey for Google Recaptcha');
@@ -53,18 +55,20 @@ var script = {
                 }, 10);
             }
         },
-        generateManualToken: function generateManualToken(){
+        generateManualToken: function generateManualToken() {
             return window['grecaptcha'].execute(this.sitekey, {action: this.action});
         },
-        isHidden: function isHidden(){
-            if(this.hidden === 'true'){
+        isHidden: function isHidden() {
+            if (this.hidden === 'true') {
                 return true;
             }
             return false;
         }
     },
     template: '',
-    render: function render() { return ''; }
+    render: function render() {
+        return '';
+    }
 };
 
 function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier

@@ -5,7 +5,8 @@
         props: ['sitekey', 'action'],
         data() {
             return {
-                runs: 0
+                runs: 0,
+                script_added: false,
             }
         },
         watch: {
@@ -17,14 +18,15 @@
                 }, 10);
             }
         },
-        created: function () {
-            if (!_.isUndefined(this.sitekey)) {
+        mounted() {
+            if (!_.isUndefined(this.sitekey) && this.script_added === false) {
                 let recaptchaScript = document.createElement('script');
                 recaptchaScript.setAttribute('src', `https://www.google.com/recaptcha/api.js?render=${this.sitekey}`);
                 document.head.appendChild(recaptchaScript);
                 setTimeout(() => {
                     this.generateToken()
                 }, 10);
+                this.script_added = true;
             } else {
                 // eslint-disable-next-line
                 console.log('Provide SiteKey for Google Recaptcha')
@@ -48,17 +50,19 @@
                     }, 10);
                 }
             },
-            generateManualToken(){
+            generateManualToken() {
                 return window['grecaptcha'].execute(this.sitekey, {action: this.action});
             },
-            isHidden(){
-                if(this.hidden === 'true'){
+            isHidden() {
+                if (this.hidden === 'true') {
                     return true;
                 }
                 return false;
             }
         },
         template: '',
-        render() { return ''; }
+        render() {
+            return '';
+        }
     }
 </script>
