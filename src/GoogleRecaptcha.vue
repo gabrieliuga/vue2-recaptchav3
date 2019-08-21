@@ -48,6 +48,9 @@
                     }, 10);
                 }
             },
+            generateManualToken(){
+                return window['grecaptcha'].execute(this.sitekey, {action: this.action});
+            },
             isHidden(){
                 if(this.hidden === 'true'){
                     return true;

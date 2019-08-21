@@ -53,6 +53,9 @@ var script = {
                 }, 10);
             }
         },
+        generateManualToken: function generateManualToken(){
+            return window['grecaptcha'].execute(this.sitekey, {action: this.action});
+        },
         isHidden: function isHidden(){
             if(this.hidden === 'true'){
                 return true;

@@ -4,7 +4,7 @@ Usage in form:
 ```
 <form>
 <input type="hidden" name="token" v-model="googleToken" />
-<GoogleRecaptcha sitekey="yourSiteKey" action="yourPageAction" v-on:google_captcha_token="updateToken"></GoogleRecaptcha>
+<GoogleCaptcha sitekey="yourSiteKey" action="yourPageAction" v-on:google_captcha_token="updateToken" ref="captcha"></GoogleCaptcha>
 </form>
 ```
 
@@ -24,6 +24,11 @@ export default {
         updateToken(payload){
           this.googleToken = payload.response_token;
         },
+        formSubmit(){
+            this.$refs.captcha.generateManualToken().then((token) => {
+                //use token here
+            });
+        }
         ...
     }
 }
